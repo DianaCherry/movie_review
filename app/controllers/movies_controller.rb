@@ -59,12 +59,12 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating)
+      params.require(:movie).permit(:title, :description, :movie_length, :director, :rating, :image)
     end
 
   def verify_owner
     unless @movie.user === current_user
-      redirect to root_path, notice: 'Access denied'
+      redirect_to root_path, notice: 'Access denied'
     end
   end
 end
